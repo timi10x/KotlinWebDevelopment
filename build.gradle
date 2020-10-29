@@ -6,6 +6,7 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -24,6 +25,13 @@ dependencies {
 
     //helps to show all the logs when building your application
     implementation("ch.qos.logback:logback-classic:1.2.3")
+
+    //Object Relational Mapping framework for kotlin that simplifies the work with the database
+    implementation("org.jetbrains.exposed:exposed:0.15.1")
+
+    //postgresql dependency
+    implementation("org.postgresql:postgresql:42.2.5")
+
 
     testImplementation("io.ktor:ktor-server-test-host:$ktor_version")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit_version")
