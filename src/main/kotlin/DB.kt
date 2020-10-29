@@ -1,9 +1,18 @@
-import org.jetbrains.exposed.dao.IntIdTable
-import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.sql.Database
 
-object User: IntIdTable(){
-    val name = varchar("name", 20).uniqueIndex()
-    val age = integer("age").default(0)
+object DB {
+    private val host = "localhost"
+    private val port = 5555
+    private val databaseName = "fullstack_db"
+    private val databaseUser = "fullstack_user"
+    private val databasePassword = "fullstack123"
+
+    fun connect(): Database {
+        return Database.connect(
+            "jdbc:postgresql://$host:$port/$databaseName",
+            driver = "org.postgresql.Driver", user = databaseUser, password = databasePassword
+        )
+    }
+
+
 }
-
