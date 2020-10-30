@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  fullstack_database:
+    image: postgres:11
+    ports:
+      - "5000:5432"
+    environment:
+      - POSTGRES_USER=fullstack_user
+      - POSTGRES_PASSWORD=fullstack123
+      - POSTGRES_DB=fullstack_db
+  web:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - fullstack_database
+    environment:
+      - DB_HOST=fullstack_database
+      - DB_PORT=5432
+      - DB_USER=fullstack_user
+      - DB_PASSWORD=fullstack123
+      - DB_NAME=fullstack_db

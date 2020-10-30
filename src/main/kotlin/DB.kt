@@ -1,11 +1,11 @@
 import org.jetbrains.exposed.sql.Database
 
 object DB {
-    private val host = "localhost"
-    private val port = 5555
-    private val databaseName = "fullstack_db"
-    private val databaseUser = "fullstack_user"
-    private val databasePassword = "fullstack123"
+    private val host = System.getenv("DB_HOST")
+    private val port = System.getenv("DB_PORT")
+    private val databaseName = System.getenv("DB_NAME")
+    private val databaseUser = System.getenv("DB_USER")
+    private val databasePassword = System.getenv("DB_PASSWORD")
 
     fun connect(): Database {
         return Database.connect(
